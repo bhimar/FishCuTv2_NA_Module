@@ -144,25 +144,9 @@ hold off
 max_x = ceil(max(neurxyz(:,1)));
 max_y = ceil(max(neurxyz(:,2)));
 max_z = ceil(max(neurxyz(:,3)));
-%RotNeurMask = ones(max_x,max_y,max_z);
-%[a, b, c] = ind2sub(size(RotNeurMask),find(RotNeurMask));
-%fill = inShape(triangulation,a,b,c);
-%points = [a b c];
-%points(~fill,:) = [];
-%RotatedNeur = zeros(size(RotNeurMask));
-%RotatedNeur(sub2ind(size(RotNeurMask),points(:,1),points(:,2),points(:,3))) = 1;
-
-%calculate the size of the exported matrix
-corner = [max(x) max(y) max(z)];
-%run corner through all transformations and then round
-%(1) translation
-cornerTrans = [corner 1]';
-cornerTrans = transMat * cornerTrans;
-corner = cornerTrans(1:3);
-%(2) first rotation
-corner = zrot * corner;
-%(3) second rotation
-corner = yrot * corner;
+RotNeurMask = ones(max_x,max_y,max_z);
+RotatedNeur = zeros(size(RotNeurMask));
+RotatedNeur(sub2ind(size(RotNeurMask),round(x2),round(y2),round(z2))) = 1;
 
 RotatedNeur = logical(RotatedNeur);
 
