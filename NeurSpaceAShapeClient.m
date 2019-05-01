@@ -1,9 +1,7 @@
 %Client for NeurSpaceAShape.m function
 
 %load previous segmentation
-filePath = ['Z:\Rehaan Bhimani\FishCuTv2 Project\' ...
-            'FishCuTv2 Modules\Test Data\bmp1a germline mutants\' ...
-            'germ4\02-Jun-2016\'];
+filePath = 'Z:\Rehaan Bhimani\FishCuTv2 Project\FishCuTv2 Modules\Test Data\bmp1a crispants\msbl 95.AB bmp1a 01 Analysis Files\';
 load([filePath 'ReconstructedSegmentation']);
 NaMajAx = [];
 NaMinAx = [];
@@ -17,8 +15,8 @@ end
 %write to file
 
 % filePath2 = 'Z:\Rehaan Bhimani\FishCuTv2 Project\FishCuTv2 Modules\Test Data\';
-% fishSample = 'bmp1aGermlineNAs.xlsx';
+% fishSample = 'shamGermlineNAs.xlsx';
 % table = xlsread([filePath2 fishSample]);
 % table(:,size(table,2)+1) = NaMajAx;
 % xlswrite([filePath2 fishSample], table);
-
+% 

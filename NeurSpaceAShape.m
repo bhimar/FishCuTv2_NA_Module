@@ -33,7 +33,7 @@ function [NaMajAx,NaMinAx,NaArea,NaEffArea] = ...
     neurCC.NumObjects = 1;
     
     %TESTING AND DEV - Replaces everything after the next line
-    rotatedneur = RotateNeur_Eig(neur, neurCC);
+    rotatedneur = RotateNeur_Eul(neur, neurCC);
     
     %SEE oldrot.m for old rotation algorithm
 
@@ -131,6 +131,6 @@ function [NaMajAx,NaMinAx,NaArea,NaEffArea] = ...
        NaEffArea(n) = NaN;
     end
     %for development/debugging reasons
-    input('press "Enter" to continue');
+    %input('press "Enter" to continue');
     close all
 end
