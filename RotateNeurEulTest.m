@@ -13,5 +13,5 @@ function RotateNeurEulTest(neuralImage)
     neurCC.NumObjects = 1;
     
     %TESTING AND DEV - Replaces everything after the next line
-    rotatedneur = RotateNeur_Eul(neur, neurCC);
+    rotatedneur = RotateNeur_EulEval(neur, neurCC);
 end

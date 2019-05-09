@@ -105,25 +105,7 @@ neurxyz = zrot * neurxyz;
 neurxyz = yrot * neurxyz;
 
 %(4)
-min_x = min(neurxyz(1,:));
-min_y = min(neurxyz(2,:));
-min_z = min(neurxyz(3,:));
-reverseTransVec = -1 * [min_x;min_y;min_z];
-reverseTransVec = reverseTransVec + 1;
-invtransMat = [
-            1 0 0 reverseTransVec(1)
-            0 1 0 reverseTransVec(2)
-            0 0 1 reverseTransVec(3)
-            0 0 0 1];
 
-invtransneur = neurxyz;
-invtransneur(4,:) = 1;
-invtransneur = invtransMat * invtransneur;
-invtransneur(4,:) = [];
-neurxyz = invtransneur;
-
-newcentroid = invtransMat * [0;0;0;1];
-newcentroid(4) = [];
 
 %visualize rotation result
 neurxyz = neurxyz';

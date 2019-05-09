@@ -8,20 +8,43 @@ function RotatedNeur = RotateNeur_EulEval(neur, neurCC)
 props = regionprops3(neurCC, 'Orientation');
 
 eulangs = props.Orientation;
-inveul = eul2rotm(-1 * eulangs);
+inveul = (eul2rotm(deg2rad(eulangs)))';
 neurxyz = [x y z]';
 rotneurxyz = inveul * neurxyz;
-max_x = ceil(max(rotneurxyz(:,1)));
-max_y = ceil(max(rotneurxyz(:,2)));
-max_z = ceil(max(rotneurxyz(:,3)));
+
+% translate to positive coordinates
+min_x = min(rotneurxyz(1,:));
+min_y = min(rotneurxyz(2,:));
+min_z = min(rotneurxyz(3,:));
+reverseTransVec = -1 * [min_x;min_y;min_z];
+reverseTransVec = reverseTransVec + 1;
+invtransMat = [
+            1 0 0 reverseTransVec(1)
+            0 1 0 reverseTransVec(2)
+            0 0 1 reverseTransVec(3)
+            0 0 0 1];
+
+invtransneur = rotneurxyz;
+invtransneur(4,:) = 1;
+invtransneur = invtransMat * invtransneur;
+invtransneur(4,:) = [];
+rotneurxyz = invtransneur';
+
+
+x2 = rotneurxyz(:,1);
+y2 = rotneurxyz(:,2);
+z2 = rotneurxyz(:,3);
+max_x = ceil(max(x2));
+max_y = ceil(max(y2));
+max_z = ceil(max(z2));
 RotNeurMask = ones(max_x,max_y,max_z);
 RotatedNeur = zeros(size(RotNeurMask));
 RotatedNeur(sub2ind(size(RotNeurMask),round(x2),round(y2),round(z2))) = 1;
 RotatedNeur = logical(RotatedNeur);
 
 %visualize new axes
-neurCC = bwconncomp(RotatedNeur);
-pix = neurCC.PixelIdxList;
+rotneurCC = bwconncomp(RotatedNeur);
+pix = rotneurCC.PixelIdxList;
 catpix = [];
 for i = 1:size(pix,2)
    catpix = [catpix ; pix{i}];  
@@ -55,5 +78,4 @@ scatter3(secondaxis(:,1),secondaxis(:,2),secondaxis(:,3),'b*')
 scatter3(thirdaxis(:,1),thirdaxis(:,2),thirdaxis(:,3),'g*')
 hold off
 input('press "Enter" to continue');
-RotatedNeur = 0;
 end
