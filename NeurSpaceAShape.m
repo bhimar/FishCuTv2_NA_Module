@@ -131,6 +131,6 @@ function [NaMajAx,NaMinAx,NaArea,NaEffArea] = ...
        NaEffArea(n) = NaN;
     end
     %for development/debugging reasons
-    %input('press "Enter" to continue');
+    input('press "Enter" to continue');
     close all
 end

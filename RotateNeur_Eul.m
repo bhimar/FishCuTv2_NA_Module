@@ -1,4 +1,4 @@
-function RotatedNeur = RotateNeur_EulEval(neur, neurCC)
+function RotatedNeur = RotateNeur_Eul(neur, neurCC)
 %Rotates the neural arch by computing the Euler Angls
 %and rotating to be in line with the cartesian axes
 %PARAMS: neurCC is the editted component data of the neural arch
