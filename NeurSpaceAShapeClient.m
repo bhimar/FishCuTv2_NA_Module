@@ -1,7 +1,7 @@
 %Client for NeurSpaceAShape.m function
 
 %load previous segmentation
-filePath = 'Z:\Rehaan Bhimani\FishCuTv2 Project\FishCuTv2 Modules\Test Data\crispant shams\msbl 95.AB sham 15 Analysis Files\';
+filePath = 'Z:\Rehaan Bhimani\FishCuTv2 Project\FishCuTv2 Modules\Test Data\crispant shams\msbl 95.AB sham 11 Analysis Files\';
 load([filePath 'ReconstructedSegmentation']);
 NaMajAx = [];
 NaMinAx = [];

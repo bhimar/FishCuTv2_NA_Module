@@ -78,6 +78,6 @@ scatter3(secondaxis(:,1),secondaxis(:,2),secondaxis(:,3),'b*')
 scatter3(thirdaxis(:,1),thirdaxis(:,2),thirdaxis(:,3),'g*')
 hold off
 % uncomment the next line for debugging purposes
-% input('press "Enter" to continue');
+input('press "Enter" to continue');
 
 end
